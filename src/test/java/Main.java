@@ -22,13 +22,10 @@ public class Main {
         List<WebDriver> listDriver = new ArrayList<WebDriver>();
         listDriver = createdriver();
         if (listDriver.size() != 0) {
-            for (WebDriver driver : listDriver
-            ) {
+            for (WebDriver driver : listDriver) {
                 try {
                     System.out.println("Test trên: " + driver);
                     driver.get("https://www.bicyclebluebook.com");
-
-
                     WebDriverWait wait = new WebDriverWait(driver, 10);
                     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     WebElement buttonLogin = driver.findElement(By.xpath("//span[text()='Login777' and @class='hidden-xs']"));
@@ -56,7 +53,6 @@ public class Main {
     }
 
     private static WebDriver createChromeDriver() {
-        WebDriver driver = null;
         WebDriverManager.chromedriver().version("84.0.4147.30").setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-maximized");
@@ -67,15 +63,14 @@ public class Main {
         options.addArguments("--disable-browser-side-navigation");
         options.addArguments("--disable-gpu");
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        driver = new ChromeDriver(options);
+        WebDriver driver = new ChromeDriver(options);
         return driver;
     }
 
     private static WebDriver createFifoxDriver() {
-        WebDriver driver = null;
         WebDriverManager.firefoxdriver().version("0.27.0").setup();
         FirefoxOptions options = new FirefoxOptions();
-        driver = new FirefoxDriver(options);
+        WebDriver driver = new FirefoxDriver(options);
         driver.manage().window().maximize();
         return driver;
     }
